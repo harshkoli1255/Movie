@@ -154,7 +154,7 @@ app.get("/", async (req, res) => {
 
     let subMovies = [];
     let temp = [];
-    const batch = 4;
+    const batch = 8;
     let i;
     for(i = 0; i < movies.length; i++) {
         if(temp.length === batch) {

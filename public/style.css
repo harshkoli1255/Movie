@@ -201,6 +201,10 @@ nav {
     gap: 30px;
 }
 
+.movieSection a {
+    text-decoration: none;
+}
+
 .card {
   width: 280px;
   border-radius: 18px;
