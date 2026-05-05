@@ -4,7 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Movie = require("./models/movieSchema");
 const connectDB = require('./config/mongodb');
-const insertTheMovie = require('./init');
+const {movies, insertTheMovie} = require('./init');
 require('dotenv').config();
 const port = 8000;
 

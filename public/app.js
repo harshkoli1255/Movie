@@ -220,7 +220,8 @@ if(postBtn) {
 
 if(pages) {
     let pageNo = window.location.search.split("=")[window.location.search.split("=").length-1];
-    if(pageNo.length == 0) {
+    pageNo = pageNo - '0';
+    if(pageNo == 0) {
         pageNo = 1; 
     }
     pages.forEach(page => {

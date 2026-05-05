@@ -6,6 +6,10 @@
   margin: 40px 0;
 }
 
+.pagination a {
+  text-decoration: none;
+}
+
 /* Buttons */
 .pageBtn {
   background: transparent;

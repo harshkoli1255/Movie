@@ -204,4 +204,4 @@ function insertTheMovie() {
     });
 }
 
-module.exports = insertTheMovie;
+module.exports = {insertTheMovie, movies};

@@ -46,9 +46,35 @@
 
     <div class="pagination">
 
-        <button class="pageBtn" id="prevBtn">
-            <i class="fa-solid fa-angle-left"></i>
-        </button>
+        <%if(topRated) {%>
+            <%if(page <= 1) {%>
+                <a href="/?topRated=true&page=<%=subMovies.length%>" class="prevPage">
+                    <button class="pageBtn" id="prevBtn">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                </a>
+            <%}else{%>
+                <a href="/?topRated=true&page=<%=page-1%>" class="prevPage">
+                    <button class="pageBtn" id="prevBtn">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                </a>
+            <%}%>
+        <%}else{%>
+            <%if(page <= 1) {%>
+                <a href="/?page=<%=subMovies.length%>" class="prevPage">
+                    <button class="pageBtn" id="prevBtn">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                </a>
+            <%}else{%>
+                <a href="/?page=<%=page-1%>" class="prevPage">
+                    <button class="pageBtn" id="prevBtn">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                </a>
+            <%}%>
+        <%}%>
 
         <div class="pageNumbers">
             <%for(let i = 0; i < subMovies.length; i++) {%>
@@ -61,13 +87,39 @@
                         <button class="page" data-pno=<%=i+1%>><%=i+1%></button>
                     </a>
                 <%}%>
-                <%}%>
+            <%}%>
         </div>
 
-
-        <button class="pageBtn" id="nextBtn">
-            <i class="fa-solid fa-angle-right"></i>
-        </button>
+        <%if(topRated) {%>
+            <%if(page >= subMovies.length) {%>
+                <a href="/?topRated=true&page=<%=1%>" class="nextPage">
+                    <button class="pageBtn" id="nextBtn">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                </a>
+            <%}else {%>
+                <a href="/?topRated=true&page=<%=page+1%>" class="nextPage">
+                    <button class="pageBtn" id="nextBtn">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                </a>
+            <%}%>
+        <%}else{%>
+            <%if(page >= subMovies.length) {%>
+                <a href="/?page=<%=1%>" class="nextPage">
+                    <button class="pageBtn" id="nextBtn">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                </a>
+            <%}else {%>
+                <a href="/?page=<%=page+1%>" class="nextPage">
+                    <button class="pageBtn" id="nextBtn">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                </a>
+            <%}%>
+        <%}%>
+        
 
     </div>
 </body>
