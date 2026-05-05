@@ -2,126 +2,147 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/moreDetails.css">
-    <link rel="icon" href="/assets/movie.png" type="image/png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/moreDetails.css">
+  <link rel="icon" href="/assets/movie.png" type="image/png">
 </head>
 
 <body>
-    <%- include('../includes/navBar.ejs') %>
+  <%- include('../includes/navBar.ejs') %>
 
-    <div class="detailsPage">
+    <div class="detailsPage" data-movieid="<%= movie._id %>">
+      <a href="/">
+        <button class="backBtn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+      </a>
 
-  <button class="backBtn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+      <div class="topSection">
 
-  <div class="topSection">
-
-    <div class="poster">
-      <img src="<%= movie.img %>" />
-    </div>
-
-    <div class="info">
-
-      <p class="tag">FEATURED TITLE</p>
-
-      <h1><%= movie.movieName %></h1>
-
-      <div class="meta">
-        <span><i class="fa-regular fa-calendar"></i> <%= movie.releaseDate.getFullYear() %></span>
-        <span><i class="fa-solid fa-star"></i> <%= movie.rating %> / 10 (<%=movie.ratings.length%> users)</span>
-      </div>
-
-      <p class="desc">
-        <%= movie.desc || "No description available." %>
-      </p>
-
-      <div class="cast">
-        <% movie.cast.forEach(c => { %>
-          <span><%= c %></span>
-        <% }) %>
-      </div>
-
-      <div class="ratingBox">
-        <p class="verdict">YOUR VERDICT</p>
-        <h3>Rate this film</h3>
-
-        <div class="stars">
-          <% for(let i=0;i<10;i++){ %>
-            <i class="fa-solid fa-star movieRatingStars" data-rID=<%=i+1%>></i>
-          <% } %>
+        <div class="poster">
+          <img src="<%= movie.img %>" />
         </div>
 
-        <div class="rateInput">
-          <input type="text" placeholder="Your name" class="nameInput">
-          <button class="submitRatingBTN">SUBMIT RATING</button>
-        </div>
-      </div>
-      <div class="actionButtons">
-          <button class="deleteBtn" data-id="<%= movie._id %>">
+        <div class="info">
+
+          <p class="tag">FEATURED TITLE</p>
+
+          <h1>
+            <%= movie.movieName %>
+          </h1>
+
+          <div class="meta">
+            <span><i class="fa-regular fa-calendar"></i>
+              <%= movie.releaseDate.getFullYear() %>
+            </span>
+            <span><i class="fa-solid fa-star"></i>
+              <%= movie.rating %> / 10 (<%=movie.ratings.length%> users)
+            </span>
+          </div>
+
+          <p class="desc">
+            <%= movie.desc || "No description available." %>
+          </p>
+
+          <div class="cast">
+            <% movie.cast.forEach(c=> { %>
+              <span>
+                <%= c %>
+              </span>
+              <% }) %>
+          </div>
+
+          <div class="ratingBox">
+            <p class="verdict">YOUR VERDICT</p>
+            <h3>Rate this film</h3>
+
+            <div class="stars">
+              <% for(let i=0;i<10;i++){ %>
+                <i class="fa-solid fa-star movieRatingStars" data-rID=<%=i+1%>></i>
+                <% } %>
+            </div>
+
+            <div class="rateInput">
+              <input type="text" placeholder="Your name" class="nameInput">
+              <button class="submitRatingBTN">SUBMIT RATING</button>
+            </div>
+          </div>
+          <div class="actionButtons">
+            <button class="deleteBtn" data-id="<%= movie._id %>">
               <i class="fa-solid fa-trash"></i> Delete Movie
-          </button>
-          <a href="/movies/update/<%= movie._id %>/">
-            <button class="updateBtn" data-id="<%= movie._id %>">
-                <i class="fa-solid fa-arrow-rotate-right"></i> Update Movie
             </button>
-          </a>
+            <a href="/movies/update/<%= movie._id %>/">
+              <button class="updateBtn" data-id="<%= movie._id %>">
+                <i class="fa-solid fa-arrow-rotate-right"></i> Update Movie
+              </button>
+            </a>
+          </div>
+
+        </div>
       </div>
 
-    </div>
-  </div>
+      <div class="commentSection">
 
-  <div class="commentSection">
+        <div class="commentLeft">
+          <p class="tag">JOIN THE DIALOGUE</p>
+          <h2>Leave a comment</h2>
 
-    <div class="commentLeft">
-      <p class="tag">JOIN THE DIALOGUE</p>
-      <h2>Leave a comment</h2>
+          <input type="text" placeholder="Your name" class="uCName">
+          <textarea placeholder="Share your thoughts..." class="uCInput"></textarea>
 
-      <input type="text" placeholder="Your name" class="uCName">
-      <textarea placeholder="Share your thoughts..." class="uCInput"></textarea>
+          <button class="postBtn">POST COMMENT</button>
+        </div>
 
-      <button class="postBtn">POST COMMENT</button>
-    </div>
+        <div class="commentRight">
+          <h3><i class="fa-solid fa-comment"></i> Discussion (<%=movie.comments.length%>)</h3>
+          <%if(movie.comments.length> 0) {%>
+            <%movie.comments.forEach((c,index)=> {%>
+              <div class="commentCard" data-commentID="<%= c._id %>">
+                <div class="commentHeader">
 
-    <div class="commentRight">
-      <h3><i class="fa-solid fa-comment"></i> Discussion (<%=movie.comments.length%>)</h3>
-      <%if(movie.comments.length > 0) {%>
-        <%movie.comments.forEach((c,index) => {%>
-          <div class="commentCard">
-              <div class="commentHeader">
-
-                  <div class="avatar"><%=c.name[0]%></div>
-
-                  <div class="userInfo">
-                      <h4><%=c.name%></h4>
-                      <span class="time"><%= new Date(c.createdAt).toLocaleString() %></span>
+                  <div class="avatar">
+                    <%=c.name[0]%>
                   </div>
 
+                  <div class="userInfo">
+                    <h4>
+                      <%=c.name%>
+                    </h4>
+                    <span class="time">
+                      <%= new Date(c.createdAt).toLocaleString() %>
+                    </span>
+                  </div>
+
+                </div>
+
+                <div class="userCommentAndDelete">
+                    <p class="commentText">
+                      <%=c.text%>
+                    </p>
+                    <button class="deleteCommentBtn">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
               </div>
+              <br />
 
-              <p class="commentText">
-                  <%=c.text%>
-              </p>
-          </div>
-          <br/>
-
-        <%})%>
-      <%}else {%>
-        <div class="emptyBox">
-          No comments yet. Be the first to chime in.
+              <%})%>
+                <%}else {%>
+                  <div class="emptyBox">
+                    No comments yet. Be the first to chime in.
+                  </div>
+                  <%}%>
         </div>
-      <%}%>
+
+      </div>
+
     </div>
-
-  </div>
-
-</div>
 </body>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    <script src="/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script src="/app.js"></script>
+
 </html>

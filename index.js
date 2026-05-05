@@ -89,6 +89,23 @@ app.post("/delete", async (req, res) => {
     })
 })
 
+
+app.post("/deletecomment", (req, res) => {
+    const {movieID, commentID} =  req.body;
+    Movie.findByIdAndUpdate(movieID, {
+        $pull: {
+            comments : {
+                _id : commentID
+            }
+        }
+    }, {returnDocument: 'after'}).then((data) => {
+        res.send(data);
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
+
 app.get('/movies/update/:id', async (req, res) => {
     const { id } = req.params;
     const movie = await Movie.findById(id);
@@ -143,7 +160,7 @@ app.get("/", async (req, res) => {
     }
     
     else if(typeof query === "string") {
-        movies = await Movie.find({movieName: {$regex: query, $options: "i"}});
+        movies = await Movie.find({$or: [{movieName: {$regex: query, $options: "i"}}, {cast: {$regex: query, $options: "i"}}, {desc: {$regex: query, $options: "i"}}]});
     }
     else if(query == undefined){
         movies = await Movie.find();

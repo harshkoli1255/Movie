@@ -5,6 +5,9 @@
   background: radial-gradient(circle at top, #1a0000, #000);
 }
 
+.detailsPage a {
+  text-decoration: none;
+}
 
 .backBtn {
   background: transparent;
@@ -26,6 +29,7 @@
 .poster img {
   width: 280px;
   border-radius: 15px;
+  pointer-events: none;
 }
 
 
@@ -182,7 +186,7 @@
   text-decoration: none;
 }
 
-.deleteBtn,.updateBtn {
+.deleteBtn,.updateBtn,.deleteCommentBtn {
   background: transparent;
   border: 1px solid #ff3b3b;
   color: #ff3b3b;
@@ -192,7 +196,18 @@
   transition: 0.2s ease;
 }
 
-.deleteBtn:hover,.updateBtn:hover {
+.deleteCommentBtn {
+  background: transparent;
+  border: 1px solid #ff3b3b;
+  color: #ff3b3b;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  height: 85%;
+}
+
+.deleteBtn:hover,.updateBtn:hover,.deleteCommentBtn:hover {
   background: #ff3b3b;
   color: white;
 }
@@ -211,6 +226,11 @@
     border-color: rgba(255, 0, 0, 0.4);
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
     transform: translateY(-2px);
+}
+
+.userCommentAndDelete {
+  display: flex;
+  justify-content: space-between;
 }
 
 .commentHeader {

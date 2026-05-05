@@ -1,7 +1,6 @@
 const inputBox = document.querySelector('.inputBox');
 const movieSearchBTN = document.querySelector('.movieSearchBTN');
 const allMovieBTN = document.querySelector('.allMovieBTN');
-const backBtn = document.querySelector('.backBtn');
 const movieRatingStar = document.querySelectorAll('.movieRatingStars');
 const deleteBtn = document.querySelector(".deleteBtn");
 const topRatedBtn = document.querySelector(".topRatedBtn");
@@ -13,6 +12,7 @@ const postBtn = document.querySelector(".postBtn");
 const updateBtn = document.querySelector(".updateBtn");
 const pages = document.querySelectorAll(".page");
 const end = inputBox.value.length;
+const deleteCommentBtns = document.querySelectorAll(".deleteCommentBtn");
 
 let value;
 const API_URL = window.location.origin;
@@ -58,11 +58,6 @@ document.querySelectorAll('.card').forEach(movie => {
 });
 
 
-if(backBtn) {
-    backBtn.addEventListener("click", () => {
-        window.location.href = `${API_URL}/`;
-    })
-}
 
 if(nameInput) {
     submitRatingBTN.disabled = true;
@@ -77,14 +72,13 @@ if(nameInput) {
 
     submitRatingBTN.addEventListener("click", async () => {
         if (!nameInputValue || submitRatingBTN.disabled) return;
-        console.log("clicked");
+        // console.log("clicked");
         await rateMovie(
             window.location.pathname.split("/")[2],
             currentRating + 1,
             nameInputValue
         );
-        alert(`You Rated ${currentRating + 1} to ${submitRatingBTN.closest(".info").querySelector(".info h1").textContent} `);
-        console.log("hello");
+        alert(`You Rated ${currentRating + 1}: ${submitRatingBTN.closest(".info").querySelector("h1").textContent.trim()}`);
         nameInput.value = "";
         nameInputValue = "";
         currentRating = -1;
@@ -188,6 +182,37 @@ async function addComment(uN, uC, mID) {
     })
 }
 
+async function deleteComment(cID, mID) {
+    const data = {
+        commentID : cID,
+        movieID: mID
+    }
+
+    const options = {
+        headers : {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }
+    return axios.post(`${API_URL}/deletecomment`, data, options);
+}
+
+if(deleteCommentBtns) {
+    deleteCommentBtns.forEach(deleteCommentBtn => {
+        deleteCommentBtn.addEventListener("click", () => {
+            const isCommentDelete = confirm("Are you sure you want to delete the comment");
+            if(isCommentDelete) {
+                deleteComment(deleteCommentBtn.closest(".commentCard").dataset.commentid, deleteCommentBtn.closest(".detailsPage").dataset.movieid).then((res) => {
+                    window.location.reload();
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+            else {
+                return;
+            }
+        })
+    })
+}
 
 if(postBtn) {
     postBtn.disabled = true;
