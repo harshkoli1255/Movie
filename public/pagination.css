@@ -1,0 +1,61 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 40px 0;
+}
+
+/* Buttons */
+.pageBtn {
+  background: transparent;
+  border: 1px solid #333;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pageBtn:hover {
+  border-color: red;
+  color: red;
+}
+
+/* Numbers */
+.pageNumbers {
+  display: flex;
+  gap: 10px;
+}
+
+.pageNumbers a {
+    text-decoration: none;
+}
+
+.page {
+  background: #111;
+  border: 1px solid #222;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.page:hover {
+  border-color: red;
+  color: red;
+}
+
+/* Active page */
+.page.active {
+  background: red;
+  border: none;
+  color: white;
+}
+
+/* Dots */
+.dots {
+  color: #777;
+  padding: 8px;
+}

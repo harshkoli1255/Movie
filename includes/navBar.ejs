@@ -1,0 +1,42 @@
+<nav>
+        <div class="logoContainer">
+            <a href="/">
+                <div class="logoIMGContainer">
+                    <i class="fa-solid fa-clapperboard"></i>
+                </div>
+    
+                <div class="logoTEXTContainer">
+                    <span>CINERATE</span>
+                    <span>PREMIUM VAULT</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="searchContainer">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search movies, cast, year..." class="inputBox" name="q" value=<%= query || ''%>>
+            <button class="movieSearchBTN">Search</button>
+        </div>
+
+        <div class="navActions">
+            <a href="/?topRated=true&page=1">
+                <button class="topRatedBtn">
+                    <i class="fa-solid fa-star"></i>
+                        Top Rated
+                </button>
+                
+            </a>
+            <a href="/">
+                <button class="topRatedBtn allMovieBTN">
+                    <i class="fa-solid fa-circle-play"></i>
+                    All Movies
+                </button>
+            </a>
+            
+            <div class="buttonContainer">
+                <a href="/addmovie">
+                    <button class="addMovieBtn"><i class="fa-sharp-duotone fa-regular fa-plus"></i>ADD MOVIE</button>
+                </a>
+            </div>
+        </div>
+    </nav>

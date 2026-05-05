@@ -1,0 +1,104 @@
+.addPage {
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+  color: white;
+}
+
+.addPage a{
+  text-decoration: none;
+}
+
+.backBtn {
+  background: transparent;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.tag {
+  color: red;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.header h1 {
+  font-size: 40px;
+  margin: 10px 0;
+}
+
+.subText {
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  font-size: 12px;
+  color: red;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  border: 1px solid #222;
+  color: white;
+  border-radius: 8px;
+}
+
+textarea {
+  height: 120px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.row .formGroup {
+  flex: 1;
+}
+
+.stars i {
+  color: gold;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.stars i.active {
+  color: gold;
+}
+
+.btnGroup {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.submitBtn {
+  background: red;
+  border: none;
+  padding: 12px 18px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  background: transparent;
+  border: 1px solid #333;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}

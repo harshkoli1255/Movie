@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/pagination.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="/assets/movie.png" type="image/png">
+</head>
+<body>
+    <%- include('../includes/navBar.ejs') %>
+
+    
+    <div class="movieSection">
+        <%for(movie of movies) {%>
+            <div class="card" data-id=<%-movie._id %> >
+                <div class="image-container">
+                    <img src=<%= movie.img %> alt="Spider-Man" />
+                    
+                    <%if(movie.rating > 0) {%>
+                        <div class="rating">
+                            <%= `⭐ ${movie.rating}`%>
+                        </div>
+                        <%}else {%>
+                            <%= null%>
+                        <%}%>
+                    <div class="overlay"></div>
+                </div>
+    
+                <div class="content">
+                    <h2><%=movie.movieName%></h2>
+                    <div class="bottom">
+                        <span class="year"><%=movie.releaseDate.getFullYear()%></span>
+                        <span class="actor"><%=movie.cast[0]%></span>
+                    </div>
+                </div>
+            </div>
+        <%}%>
+    </div>
+
+    <div class="pagination">
+
+        <button class="pageBtn" id="prevBtn">
+            <i class="fa-solid fa-angle-left"></i>
+        </button>
+
+        <div class="pageNumbers">
+            <%for(let i = 0; i < subMovies.length; i++) {%>
+                <%if(topRated) {%>
+                    <a href="/?topRated=true&page=<%=i+1%>">
+                        <button class="page" data-pno=<%=i+1%>><%=i+1%></button>
+                    </a>
+                <%}else{%>
+                    <a href="/?page=<%=i+1%>">
+                        <button class="page" data-pno=<%=i+1%>><%=i+1%></button>
+                    </a>
+                <%}%>
+                <%}%>
+        </div>
+
+
+        <button class="pageBtn" id="nextBtn">
+            <i class="fa-solid fa-angle-right"></i>
+        </button>
+
+    </div>
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="/app.js"></script>
+</html>

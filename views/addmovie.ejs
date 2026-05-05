@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/addmovie.css">
+    <link rel="icon" href="/assets/movie.png" type="image/png">
+</head>
+
+<body>
+    <nav>
+        <div class="logoContainer">
+            <a href="/">
+                <div class="logoIMGContainer">
+                    <i class="fa-solid fa-clapperboard"></i>
+                </div>
+    
+                <div class="logoTEXTContainer">
+                    <span>CINERATE</span>
+                    <span>PREMIUM VAULT</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="navActions">
+            <a href="/?topRated=true&page=1">
+                <button class="topRatedBtn">
+                    <i class="fa-solid fa-star"></i>
+                    Top Rated
+                </button>
+            </a>
+            <a href="/">
+                <button class="topRatedBtn allMovieBTN">
+                    <i class="fa-solid fa-circle-play"></i>
+                    All Movies
+                </button>
+            </a>
+
+            <div class="buttonContainer">
+                 <a href="/addmovie"> 
+                    <button class="addMovieBtn"><i class="fa-sharp-duotone fa-regular fa-plus"></i>ADD MOVIE</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="addPage">
+
+        <a href="/">
+            <button class="backBtn">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+        </a>
+
+        <div class="header">
+            <p class="tag">NEW ARRIVAL</p>
+            <h1>Add a film</h1>
+            <p class="subText">
+                Contribute a new title to the vault. Fill in the details and make it yours.
+            </p>
+        </div>
+
+        <form action="/addmovie" method="POST" class="form">
+
+            <div class="formGroup">
+                <label>TITLE *</label>
+                <input type="text" name="movieName" placeholder="e.g. Blade Runner 2049" required>
+            </div>
+
+            <div class="row">
+                <div class="formGroup">
+                    <label>RELEASE DATE</label>
+                    <input type="date" name="releaseDate">
+                </div>
+
+                <div class="formGroup">
+                    <label>CAST (COMMA SEPARATED)</label>
+                    <input type="text" name="cast" placeholder="Ryan Gosling, Harrison Ford">
+                </div>
+            </div>
+
+            <div class="formGroup">
+                <label>POSTER IMAGE URL</label>
+                <input type="text" name="img" placeholder="https://image.tmdb.org/t/p/w500/...">
+            </div>
+
+            <div class="formGroup">
+                <label>DESCRIPTION</label>
+                <textarea name="desc" placeholder="Short synopsis..."></textarea>
+            </div>
+
+
+            <div class="btnGroup">
+                <button type="submit" class="submitBtn">ADD TO VAULT</button>
+                <button type="button" class="cancelBtn">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script src="/app.js"></script>
+
+</html>
